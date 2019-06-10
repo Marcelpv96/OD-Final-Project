@@ -1,7 +1,7 @@
 /* Create app with the information provided by app.csv */
 LOAD CSV WITH HEADERS FROM 'file:///app.csv' AS app
 
-MERGE (app:App {name:app.name, price:app.price, dni:app.aggregateRating})
+MERGE (application:App {name:app.name, price:app.price, dni:app.rating})
 
 
 WITH count(*) as dummy
