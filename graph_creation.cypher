@@ -8,9 +8,16 @@ WITH count(*) as dummy
 
 
 LOAD CSV WITH HEADERS FROM 'file:///categories.csv' AS categories
-MATCH (app:App)
-WHERE app.name = categories.app
-MERGE (app)-[:hasCategory]->(category:Category {name:categories.category})
+MERGE (:Category {name:categories.category})
+
+
+WITH count(*) as dummy
+
+
+LOAD CSV WITH HEADERS FROM 'file:///categories.csv' AS categories
+MATCH (app:App), (cat:Category)
+WHERE app.name = categories.app AND cat.name = categories.category
+MERGE (app)-[:hasCategory]->(cat)
 
 
 WITH count(*) as dummy
