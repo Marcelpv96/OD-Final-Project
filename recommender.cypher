@@ -6,7 +6,7 @@ RETURN AVG(toFloat(r.overall))
 // list users and their apps (to find target)
 
 MATCH (u:Reviewer)-[:writeReview]->(:Review)-[:review]->(a:App)
-RETURN u.name AS user, COLLECT(a.name) AS apps
+RETURN u.id AS user, u.name AS name, COLLECT(a.name) AS apps
 
 // get recommendations (sorted by score)
 
