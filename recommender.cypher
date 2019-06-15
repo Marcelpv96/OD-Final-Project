@@ -10,7 +10,7 @@ RETURN u.id AS user, u.name AS name, COLLECT(a.name) AS apps
 
 // get recommendations (sorted by score)
 
-MATCH (t:Reviewer {name : "Douglas Smith"})-[:writeReview]->(:Review)-[:review]->(a1:App),
+MATCH (t:Reviewer {id : "A1U9Z3WD1PWQ09"})-[:writeReview]->(:Review)-[:review]->(a1:App),
       (a1:App)-[:hasCategory]->(cat:Category)<-[:hasCategory]-(a2:App)
 // find apps that other users have reviewed
 OPTIONAL MATCH
