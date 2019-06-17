@@ -1,4 +1,4 @@
-# Play store Apps recommend
+# Play store Apps recommender
 
 
 This project contains all the source code used to integrate thata from 
