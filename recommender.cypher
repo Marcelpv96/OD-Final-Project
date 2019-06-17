@@ -22,11 +22,8 @@ OPTIONAL MATCH
 // avoid trivial case
 WHERE a1 <> a2
 // compute scores by components
-WITH a2.name AS target, AVG(toFloat(rev.overall)) AS ratScore,
+WITH a2.name AS target, toFloat(a2.rating) AS ratScore,
      COUNT(DISTINCT cat) AS catScore, COUNT(DISTINCT f) AS userScore, COUNT(DISTINCT rel) AS relScore
-// handle no-reviews case
-WITH CASE WHEN ratScore IS NULL THEN 4.21 ELSE ratScore END AS ratScore,
-     target, catScore, userScore, relScore
 // sum components
 RETURN target, ratScore + catScore + userScore + relScore AS score
 ORDER BY score DESC
